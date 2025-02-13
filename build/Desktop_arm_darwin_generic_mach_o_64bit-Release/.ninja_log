@@ -1,0 +1,19 @@
+# ninja log v6
+1793	1960	1739381243714311297	ret2.app/Contents/MacOS/ret2	fbbc0268219224df
+8	347	1739381514172888000	/Users/brian/git/ret2/build/Desktop_arm_darwin_generic_mach_o_64bit-Release/ret2_autogen/timestamp	529345f921d3840c
+411	1793	1739381242332026657	CMakeFiles/ret2.dir/mainwindow.cpp.o	113101448aa97953
+410	1341	1739381242331528368	CMakeFiles/ret2.dir/ret2_autogen/mocs_compilation.cpp.o	9fffc91a3063bf3d
+410	1343	1739381242331735034	CMakeFiles/ret2.dir/main.cpp.o	f0ffa6ba55b44ef3
+8	347	1739381514172888000	ret2_autogen/mocs_compilation.cpp	529345f921d3840c
+8	347	1739381514172888000	/Users/brian/git/ret2/build/Desktop_arm_darwin_generic_mach_o_64bit-Release/ret2_autogen/mocs_compilation.cpp	529345f921d3840c
+8	347	1739381514172888000	ret2_autogen/timestamp	529345f921d3840c
+2	11	1739381173296013829	CMakeFiles/clean.additional	270878e585222c38
+11	15	1739381173305320029	clean	68f1dc68724663b7
+16	339	1739381540465130000	ret2_autogen/timestamp	529345f921d3840c
+16	339	1739381540465130000	ret2_autogen/mocs_compilation.cpp	529345f921d3840c
+16	339	1739381540465130000	/Users/brian/git/ret2/build/Desktop_arm_darwin_generic_mach_o_64bit-Release/ret2_autogen/timestamp	529345f921d3840c
+16	339	1739381540465130000	/Users/brian/git/ret2/build/Desktop_arm_darwin_generic_mach_o_64bit-Release/ret2_autogen/mocs_compilation.cpp	529345f921d3840c
+340	1200	1739381540475660709	CMakeFiles/ret2.dir/main.cpp.o	f0ffa6ba55b44ef3
+340	1223	1739381540475475501	CMakeFiles/ret2.dir/ret2_autogen/mocs_compilation.cpp.o	9fffc91a3063bf3d
+340	1659	1739381540475759958	CMakeFiles/ret2.dir/mainwindow.cpp.o	113101448aa97953
+1659	1828	1739381541794486107	ret2.app/Contents/MacOS/ret2	fbbc0268219224df

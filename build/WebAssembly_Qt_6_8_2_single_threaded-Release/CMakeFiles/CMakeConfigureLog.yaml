@@ -1,0 +1,184 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Darwin - 24.3.0 - arm64
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:45 (include)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:145 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:45 (_qt_internal_find_qt_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:43 (include)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:190 (find_package)"
+      - "CMakeLists.txt:13 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-MZdnVT"
+      binary: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-MZdnVT"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/platforms;/Users/brian/git/emsdk/upstream/emscripten/cmake/Modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-MZdnVT'
+        
+        Run Build Command(s): /Users/brian/Qt/Tools/Ninja/ninja -v cmTC_03562
+        [1/2] /Users/brian/git/emsdk/upstream/emscripten/em++ -DHAVE_STDATOMIC  -std=gnu++17 -MD -MT CMakeFiles/cmTC_03562.dir/src.cxx.o -MF CMakeFiles/cmTC_03562.dir/src.cxx.o.d -o CMakeFiles/cmTC_03562.dir/src.cxx.o -c /Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-MZdnVT/src.cxx
+        [2/2] : && /Users/brian/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_03562.dir/src.cxx.o -o cmTC_03562.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/FindWrapRt.cmake:23 (check_cxx_source_compiles)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:45 (include)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:145 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:45 (_qt_internal_find_qt_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:43 (include)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:190 (find_package)"
+      - "CMakeLists.txt:13 (find_package)"
+    checks:
+      - "Performing Test HAVE_GETTIME"
+    directories:
+      source: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-B40wvZ"
+      binary: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-B40wvZ"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/platforms;/Users/brian/git/emsdk/upstream/emscripten/cmake/Modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_GETTIME"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-B40wvZ'
+        
+        Run Build Command(s): /Users/brian/Qt/Tools/Ninja/ninja -v cmTC_6febc
+        [1/2] /Users/brian/git/emsdk/upstream/emscripten/em++ -DHAVE_GETTIME  -std=gnu++17 -MD -MT CMakeFiles/cmTC_6febc.dir/src.cxx.o -MF CMakeFiles/cmTC_6febc.dir/src.cxx.o.d -o CMakeFiles/cmTC_6febc.dir/src.cxx.o -c /Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-B40wvZ/src.cxx
+        [2/2] : && /Users/brian/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_6febc.dir/src.cxx.o -o cmTC_6febc.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/FindWrapRt.cmake:34 (check_cxx_source_compiles)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:45 (include)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:145 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:45 (_qt_internal_find_qt_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:43 (include)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:190 (find_package)"
+      - "CMakeLists.txt:13 (find_package)"
+    checks:
+      - "Performing Test HAVE_SHM_OPEN_SHM_UNLINK"
+    directories:
+      source: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-1PG2xW"
+      binary: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-1PG2xW"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/platforms;/Users/brian/git/emsdk/upstream/emscripten/cmake/Modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_SHM_OPEN_SHM_UNLINK"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-1PG2xW'
+        
+        Run Build Command(s): /Users/brian/Qt/Tools/Ninja/ninja -v cmTC_565e8
+        [1/2] /Users/brian/git/emsdk/upstream/emscripten/em++ -DHAVE_SHM_OPEN_SHM_UNLINK  -std=gnu++17 -MD -MT CMakeFiles/cmTC_565e8.dir/src.cxx.o -MF CMakeFiles/cmTC_565e8.dir/src.cxx.o.d -o CMakeFiles/cmTC_565e8.dir/src.cxx.o -c /Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-1PG2xW/src.cxx
+        [2/2] : && /Users/brian/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_565e8.dir/src.cxx.o -o cmTC_565e8.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules/FindEGL.cmake:128 (check_cxx_source_compiles)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake:39 (_qt_internal_find_third_party_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake:43 (include)"
+      - "/Users/brian/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:145 (find_dependency)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:45 (_qt_internal_find_qt_dependencies)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:43 (include)"
+      - "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:190 (find_package)"
+      - "CMakeLists.txt:13 (find_package)"
+    checks:
+      - "Performing Test HAVE_EGL"
+    directories:
+      source: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-T7dIM1"
+      binary: "/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-T7dIM1"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/platforms;/Users/brian/git/emsdk/upstream/emscripten/cmake/Modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/Users/brian/Qt/6.8.2/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_EGL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-T7dIM1'
+        
+        Run Build Command(s): /Users/brian/Qt/Tools/Ninja/ninja -v cmTC_c1b5a
+        [1/2] /Users/brian/git/emsdk/upstream/emscripten/em++ -DHAVE_EGL  -std=gnu++17 -MD -MT CMakeFiles/cmTC_c1b5a.dir/src.cxx.o -MF CMakeFiles/cmTC_c1b5a.dir/src.cxx.o.d -o CMakeFiles/cmTC_c1b5a.dir/src.cxx.o -c /Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_single_threaded-Release/CMakeFiles/CMakeScratch/TryCompile-T7dIM1/src.cxx
+        [2/2] : && /Users/brian/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_c1b5a.dir/src.cxx.o -o cmTC_c1b5a.js   && :
+        
+      exitCode: 0
+...

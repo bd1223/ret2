@@ -1,0 +1,15 @@
+# ninja log v6
+3	23	1739370811166592437	ret2_autogen/timestamp	b54da103f1a4ecd8
+1091	32200	1739370812254249842	ret2.js	8f3550faf3f7dbab
+3	23	1739370811166592437	ret2_autogen/mocs_compilation.cpp	b54da103f1a4ecd8
+3	23	1739370811166592437	/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_multi_threaded-Release/ret2_autogen/timestamp	b54da103f1a4ecd8
+3	23	1739370811166592437	/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_multi_threaded-Release/ret2_autogen/mocs_compilation.cpp	b54da103f1a4ecd8
+164	1015	1739332532925209650	CMakeFiles/ret2.dir/ret2_autogen/mocs_compilation.cpp.o	5beb887f201b375a
+164	1017	1739332532925333939	CMakeFiles/ret2.dir/main.cpp.o	c0d670810b2bfcee
+24	1091	1739370811186844151	CMakeFiles/ret2.dir/mainwindow.cpp.o	2d6915f491c65580
+7	75	1739371683596648493	ret2_autogen/timestamp	b54da103f1a4ecd8
+7	75	1739371683596648493	ret2_autogen/mocs_compilation.cpp	b54da103f1a4ecd8
+7	75	1739371683596648493	/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_multi_threaded-Release/ret2_autogen/timestamp	b54da103f1a4ecd8
+7	75	1739371683596648493	/Users/brian/git/ret2/build/WebAssembly_Qt_6_8_2_multi_threaded-Release/ret2_autogen/mocs_compilation.cpp	b54da103f1a4ecd8
+76	1397	1739371683665098346	CMakeFiles/ret2.dir/mainwindow.cpp.o	2d6915f491c65580
+1397	32576	1739371684986916362	ret2.js	8f3550faf3f7dbab

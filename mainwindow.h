@@ -26,7 +26,7 @@ QT_END_NAMESPACE
 #define COLOR_INCOME         QColorConstants::Svg::palegreen
 
 #define COLOR_INFLATION      QColorConstants::Svg::lightsalmon
-#define COLOR_YEAR_FIRST     QColorConstants::Svg::white
+#define COLOR_YEAR_FIRST     QColorConstants::Svg::lightsalmon
 #define COLOR_EDITED         QColorConstants::Svg::yellow
 
 #define ITEM_ALIGNMENT       Qt::AlignRight
@@ -56,12 +56,15 @@ private slots:
     void on_actionExpand_All_triggered();
     void on_actionCollapse_Categories_triggered();
 
+    void on_actionSave_triggered();
+
 private:
     Ui::MainWindow *ui;
 
     int  next_expense_row(QTreeWidgetItem* curr_item);
     void set_column_alignment(int column, Qt::Alignment align);
     void populate_years();
+    void populate_income();
     void calculate_expense_row(QTreeWidgetItem* item);
     void calculate_expense_rows();
     void calculate_subtotals();

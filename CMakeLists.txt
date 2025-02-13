@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -44,12 +45,28 @@ endif()
 
 target_link_libraries(ret2 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
+
+# For Webassembly only, need to enable ASYNCIFY to handle event loop issues with Actions
+if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+
+    target_include_directories(ret2 PRIVATE /Users/brian/git/emsdk/upstream/emscripten/cache/sysroot/include)
+    target_link_libraries(ret2 PRIVATE idbfs.js)
+    target_link_options(ret2 PUBLIC -sASYNCIFY -Os -sFORCE_FILESYSTEM=1)
+
+#    target_link_options(ret2 PRIVATE --pre-js presettings.js)
+#    target_link_options(ret2 PRIVATE "SHELL:-s FORCE_FILESYSTEM=1 ")
+
+endif()
+
+
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.ret2)
 endif()
+
+
 set_target_properties(ret2 PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}

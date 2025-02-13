@@ -1,5 +1,130 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
+
+
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+
+
+
+#ifdef Q_OS_WASM
+
+#include <emscripten.h>
+#include <emscripten/html5.h>
+#include <emscripten/val.h>
+
+void sync_fs(bool sync)
+{
+    qDebug() << "sync_fs";
+
+    EM_ASM(
+        FS.syncfs(sync,
+                  function (err)
+                  {
+                      if (err)
+                      {
+                          console.error('Error syncing filesystem:', err);
+                      }
+                      else
+                      {
+                          console.log('Filesystem synced successfully');
+                      }
+                  }
+                  );
+        );
+}
+
+void mount_idbfs()
+{
+    EM_ASM(
+        FS.mkdir('/persistent');
+        FS.mount(IDBFS, {}, '/persistent');
+
+        FS.syncfs(  true,
+                    function (err)
+                    {
+                        // provide the DOM side a way to execute code after directory is mounted
+                        if (typeof Module.OnDataMounted !== 'undefined')
+                        {
+                            Module.OnDataMounted();
+                        }
+                    }
+        )
+    );
+
+    // EM_ASM ( FS.syncfs(true, function (err) {} ); );
+
+    qDebug() << "IDBFS mounted";
+}
+
+
+const char* datafilename = "/persistent/tst.dat";
+
+
+void save_idbfs()
+{
+    int fd = open(datafilename, O_CREAT | O_WRONLY, 0666);
+
+    const char* str = "hello!";
+    int sts = write(fd, str, strlen(str)+1);
+
+    qDebug() << "file write returned " << sts;
+
+    close(fd);
+
+    // sync_fs(false);
+    EM_ASM ( FS.syncfs(false, function (err) {} ); );
+}
+
+
+QString read_idbfs()
+{
+
+    QString qstr;
+
+
+
+    // int fd = open(datafilename, O_RDONLY);
+
+    // if (fd == -1)
+    // {
+    //     qDebug() << "file read open error " << errno;
+
+    //     qstr = "read open error " + QString::number(errno);
+    //     return qstr;
+    // }
+
+    // char buf[1024];
+    // read(fd, buf, sizeof(buf));
+    // close(fd);
+
+    // qDebug() << "buf = " << buf;
+
+    // qstr = buf;
+
+
+
+    EM_ASM(
+        var fd = FS.open('/persistent/tst.dat', 'r');
+        console.log('FS.open returned ', fd);
+
+        );
+
+
+
+    return qstr;
+
+}
+
+
+
+#endif
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -26,10 +151,38 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->treeWidget->addAction(ui->actionRevert_to_Formula);
 
+
+
+    mount_idbfs();
+
+
+    // test code to read data file
+    ui->msgs->append("reading input file");
+
+    QString qstr = read_idbfs();
+    ui->msgs->append(qstr);
+
+    ui->msgs->append("input file read complete");
+
+
+
+
+
+
+    populate_income();
+
     recalc_expenses();
 
     // on_actionExpand_All_triggered();
     on_actionCollapse_Categories_triggered();
+
+
+
+
+
+
+
+
 }
 
 
@@ -37,6 +190,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
 
 
 void MainWindow::recalc_expenses()
@@ -117,6 +272,64 @@ void MainWindow::populate_years()
 }
 
 
+void MainWindow::populate_income()
+{
+    int age_retirement = ui->lineEdit_ret_age->text().toInt();
+    int age_ss      = ui->lineEdit_ss_start_age->text().toInt();
+    int age_pension = ui->lineEdit_pension_start_age->text().toInt();
+    int age_annuity = ui->lineEdit_annuity_start_age->text().toInt();
+
+    // monthly income
+    double income_ss = ui->lineEdit_ss_income->text().toDouble() / 12.0;
+    double income_pension = ui->lineEdit_pension_income->text().toDouble() / 12.0;
+    double income_annuity = ui->lineEdit_annuity_income->text().toDouble() / 12.0;
+
+    int num_tl_items = ui->treeWidget->topLevelItemCount();
+    for ( int ii = 0; ii < num_tl_items; ii++ )
+    {
+        QTreeWidgetItem* tl_item = ui->treeWidget->topLevelItem(ii);
+
+        if (tl_item->text(COL_DESCRIPTION) == "SECURE INCOME")
+        {
+            int col = COL_YEAR_FIRST;
+
+            for ( int ii = 0; ii < tl_item->childCount(); ii++ )
+            {
+                QTreeWidgetItem* item = tl_item->child(ii);
+                double income;
+
+                if (item->text(COL_DESCRIPTION).contains("Social"))
+                {
+                    col = COL_YEAR_FIRST + (age_ss - age_retirement);
+                    income = income_ss;
+                }
+
+                else if (item->text(COL_DESCRIPTION).contains("Pension"))
+                {
+                    col = COL_YEAR_FIRST + (age_pension - age_retirement);
+                    income = income_pension;
+                }
+
+                else if (item->text(COL_DESCRIPTION).contains("Annuity"))
+                {
+                    col = COL_YEAR_FIRST + (age_annuity - age_retirement);
+                    income = income_annuity;
+                }
+
+                else
+                    continue;
+
+                col = (col < COL_YEAR_FIRST) ? COL_YEAR_FIRST : col;
+                item->setText(col, QString::number((int) income));
+                item->setBackground(col, COLOR_EDITED);
+                calculate_expense_row(item);
+            }
+        }
+    }
+}
+
+
+
 void MainWindow::calculate_expense_row(QTreeWidgetItem* item)
 {
     double inflation = (item->text(COL_INFLATION).toDouble() / 100.0) + 1.0;
@@ -174,7 +387,7 @@ void MainWindow::calculate_expense_rows()
             }
         }
 
-        else if (tl_item->text(COL_DESCRIPTION) == "SUPPLEMENTAL INCOME")
+        else if (tl_item->text(COL_DESCRIPTION) == "OTHER INCOME")
         {
             calculate_expense_row(tl_item);
         }
@@ -344,17 +557,17 @@ void MainWindow::calculate_subtotals()
                 subtotal -= tl_item->text(col).toDouble();
             }
 
-            else if (tl_item->text(COL_DESCRIPTION).contains("SUPPLEMENTAL INCOME"))
+            else if (tl_item->text(COL_DESCRIPTION).contains("OTHER INCOME"))
             {
                 subtotal -= tl_item->text(col).toDouble();
             }
 
-            else if (tl_item->text(COL_DESCRIPTION).contains("REQD MONTHLY IRA INCOME"))
+            else if (tl_item->text(COL_DESCRIPTION).contains("MONTHLY IRA INCOME"))
             {
                 tl_item->setText(col, QString::number((int) subtotal));
             }
 
-            else if (tl_item->text(COL_DESCRIPTION).contains("REQD ANNUAL IRA INCOME"))
+            else if (tl_item->text(COL_DESCRIPTION).contains("ANNUAL IRA INCOME"))
             {
                 tl_item->setText(col, QString::number((int) (subtotal * 12.0)));
             }
@@ -440,7 +653,7 @@ void MainWindow::color_rows()
             }
         }
 
-        else if (tl_item->text(COL_DESCRIPTION) == "SUPPLEMENTAL INCOME")
+        else if (tl_item->text(COL_DESCRIPTION) == "OTHER INCOME")
         {
             color_row(tl_item, COLOR_INCOME);
         }
@@ -464,7 +677,7 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
 
     QLineEdit* lineEdit = new QLineEdit(this);
     lineEdit->setText(QStringLiteral(""));
-    lineEdit->setFixedHeight(10);
+    lineEdit->setFixedHeight(16);
     lineEdit->setFrame(false);
 
     connect(lineEdit, SIGNAL(editingFinished()), this, SLOT(slotFinishEdit()));
@@ -557,5 +770,41 @@ void MainWindow::on_actionCollapse_Categories_triggered()
             ui->treeWidget->expandItem(tl_item);
         }
     }
+}
+
+
+void MainWindow::on_actionSave_triggered()
+{
+
+    qDebug() << "save";
+
+    save_idbfs();
+
+#if 0
+
+    const char* path = "tst.dat";
+
+    QString filename = path;
+
+    QFile file(filename);
+
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qDebug("file open error");
+        return;
+    }
+
+    qDebug() << "file " << filename << " opened for writing";
+
+    QTextStream out( &file );
+
+    out << "some test data" << Qt::endl;
+
+    file.close();
+
+#endif
+
+    qDebug() << "save done";
+
 }
 
